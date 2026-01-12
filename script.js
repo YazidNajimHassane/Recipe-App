@@ -1,6 +1,8 @@
 let food=document.getElementById("food");
 let search=document.getElementById("search");
 let recipeList=document.getElementById("recipeList");
+let countries=document.getElementById("country")
+let countryList=document.getElementById("countryList")
 function SeachFoods(){
     let meal=food.value.trim();
     if(!meal){
@@ -47,3 +49,33 @@ function SeachFoods(){
     });
 }
 search.addEventListener("click",SeachFoods);
+document.addEventListener("keydown",function(event){
+    if (event.key==="Enter") {
+        SeachFoods();
+    }
+});
+countries.addEventListener("click",()=>{
+
+    countryList.style.display=countryList.style.display ==="block"?"none" : "block";
+
+    countryList.innerHTML="";
+
+    fetch("https://restcountries.com/v3.1/all?fields=name,flags,cca2")
+    .then(resultat=>resultat.json())
+    .then(data=>{
+        data.sort((a,b)=>a.name.common.localeCompare(b.name.common))
+        data.forEach(country=>{
+            let button = document.createElement("button")
+            button.className="country-item";
+            button.innerHTML=`<img src="${country.flags.png}" width="15"> ${country.name.common}`
+            button.addEventListener("click",()=>{
+                countryList.style.display="none"
+                countries.innerHTML=button.innerHTML;
+            });
+            countryList.appendChild(button);
+        })
+    })
+    .catch(err=>console.log(err))
+})
+
+
