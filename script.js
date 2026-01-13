@@ -67,10 +67,10 @@ countries.addEventListener("click",()=>{
         data.forEach(country=>{
             let button = document.createElement("button")
             button.className="country-item";
-            button.innerHTML=`<img src="${country.flags.png}" width="15"> ${country.name.common}`
+            button.innerHTML=`<img src="${country.flags.png}" width="15"> `
             button.addEventListener("click",()=>{
                 countryList.style.display="none"
-                countries.innerHTML=button.innerHTML;
+                countries.innerHTML=`<img src="${country.flags.png}" height="20px" width="20px" class="img" >`;
             });
             countryList.appendChild(button);
         })
