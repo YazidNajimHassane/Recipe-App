@@ -58,6 +58,7 @@ h1{
     border-top-right-radius: 0;
     color: #5D4037; 
     background-color: #FFF8E1; 
+    padding-left: 10px;
 }
 #food::placeholder{
     color: #A1887F;
@@ -67,14 +68,15 @@ h1{
     height: 44px;
     border-radius: 10px;
     outline: 0;
-    border: 1px solid #A1887F;
+    border: 1px solid #796a65;
     margin-left: 0px;
     border-left: 0;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    background-color:  #A1887F;
+    background-color:  #413834;
     color: white;
     cursor: pointer;
+    font-weight: bold;
 }
 #search:hover{
     background-color: #5D4037;
