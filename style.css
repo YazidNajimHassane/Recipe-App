@@ -4,46 +4,83 @@ body{
     background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    color: #2e2e2e;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
 }
+body::before{
+    content:"";
+    position: fixed;
+    inset:0;
+    background: rgba(255,255,255,.3);
+    z-index:-1;
+}
+header{
+
+    position: relative;
+}
 #country{
-    color: black;
-    font-weight: bold;
-    padding: 5px;
-    margin: 5px;
+    padding: 8px 14px;
+    margin: 10px;
     border-radius: 20px ;
-    border: 1px black;
+    background-color: #fff;
+    color: #333;
+    font-weight: bold;
+    border: 2px solid #A1887F;
     cursor: pointer;
+    transition: .3s;
+}
+#country:hover{
+    background:#A1887F;
+    color:white;
 }
 .country_List{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    z-index: 1000;
     display: none;
-    max-height: 200px;
-    width: 60px;
+    max-height: 260px;
+    width: 160px;
     overflow-y: auto;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 12px;
     background-color: #fff;
-    position: absolute;
-    z-index: 100;
+    padding: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 .country-item{
-    padding: 4px 20px;
-    border: 1px solid black;
-    margin: 2px;
-    font-weight: bold;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: .3s;
 }
+.country-item img{
+    border-radius: 4px;
+}
+.country-item:hover{
+    background:#A1887F;
+    color:white;
+}
+
 h1{
     text-align: center;
     font-size: 3em;
      color: #332722; 
 }
 .searchBar{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 30px 0;
+    gap:10px;
     flex-wrap: wrap;
 }
 #food{
@@ -82,11 +119,13 @@ h1{
     background-color: #5D4037;
 }
 #recipeList{
+    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
     padding:10px ;
+    overflow-y: auto;
 }
 .recipe{
     background-color: rgba(215, 204, 200, 0.84);
@@ -153,3 +192,36 @@ button.LearnMorebtn:hover {
 .img{
     border-radius: 10px;
 }
+#suggestionLIst {
+    display: flex; 
+    position: absolute;         /* stays fixed on screen */
+    top: 50px;              /* adjust to be under search bar */
+    left: 120px;               /* center horizontally */
+    width: 90%;              /* almost full width */
+    height: 40px;            /* fixed height */
+    background-color: rgba(255, 255, 255, 0); /* transparent */          /* horizontal layout */
+    justify-content: flex-start; /* align buttons to left */
+    align-items: center;     /* center vertically */
+    gap: 10px;               /* space between buttons */
+    padding: 5px 10px;
+    border-radius: 10px;
+    overflow-x: auto;        /* scroll horizontally if too many buttons */
+    z-index: 1000;           /* on top of other content */
+}
+
+.buttonsugg {         /* do not shrink, keep natural size */
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #A1887F;
+    background-color: #FFF8E1;
+    cursor: pointer;
+    transition: background 0    .2s;
+    margin-right: 3px;
+}
+
+.buttonsugg:hover {
+    background-color: #704132;
+    color: white;
+}
+
