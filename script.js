@@ -3,6 +3,7 @@ let search=document.getElementById("search");
 let recipeList=document.getElementById("recipeList");
 let countries=document.getElementById("country")
 let countryList=document.getElementById("countryList")
+let suggestionLIst=document.getElementById("suggestionLIst")
 function SeachFoods(){
     let meal=food.value.trim();
     if(!meal){
@@ -71,6 +72,28 @@ countries.addEventListener("click",()=>{
             button.addEventListener("click",()=>{
                 countryList.style.display="none"
                 countries.innerHTML=`<img src="${country.flags.png}" height="20px" width="20px" class="img" >`;
+                let countryName=`${country.name.common}`;
+                let area = countryToArea[countryName]|| "Unknown"
+                const foods="https://www.themealdb.com/api/json/v1/1/filter.php?a="+area;
+                fetch(foods)
+                .then(response=>response.json())
+                .then(data=>{
+                    suggestionLIst.innerHTML='';
+                    if (data.meals) {
+                        data.meals.forEach(res=>{
+                            suggestionLIst.style.display="block"
+                            let button = document.createElement("button")
+                            button.classList.add('buttonsugg')
+                            button.innerHTML=res.strMeal;
+                            suggestionLIst.appendChild(button)
+                            button.addEventListener("click",()=>{
+                                food.value=res.strMeal;
+                            })
+                        })
+                    }else {
+                         suggestionLIst.innerHTML = "<p>No meals found for this country.</p>";
+                    }
+                })
             });
             countryList.appendChild(button);
         })
