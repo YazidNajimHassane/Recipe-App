@@ -7,12 +7,15 @@ body{
     color: #2e2e2e;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
+    backdrop-filter: blur(2px);
+    height: 100vh;
+    
 }
 body::before{
     content:"";
     position: fixed;
     inset:0;
-    background: rgba(255,255,255,.3);
+    background: rgba(255,255,255,.2);
     z-index:-1;
 }
 header{
