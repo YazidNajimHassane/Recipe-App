@@ -219,7 +219,7 @@ button.LearnMorebtn:hover {
 .buttonsugg {         
     padding: 10px 20px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 25px;
     border: 1px solid #A1887F;
     background-color: #FFF8E1;
     cursor: pointer;
